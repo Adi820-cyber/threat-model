@@ -1,64 +1,55 @@
 # Threat Model Documentation
 
-This repository provides a comprehensive threat modeling report for a sample vulnerable web application, following industry best practices and frameworks such as STRIDE and PASTA.
+
+This repository provides a comprehensive, professional threat modeling report for a sample vulnerable web application, following industry best practices and frameworks such as STRIDE, PASTA, Trike, VAST, OCTAVE, and OWASP. The report is modular, reference-rich, and includes technical diagrams, Linux-based labs, and actionable recommendations.
+
 
 ## Contents
-- `threat-model.tex`: Main LaTeX document with diagrams, threat analysis, and security controls.
+- `threat-model.tex`: Main LaTeX document, modularly structured with `\input` for each chapter.
+- `chapters/01_introduction.tex` ... `chapters/12_references.tex`: Each chapter of the report as a separate file.
 - `sample.bib`: Bibliography with references to key threat modeling literature.
-- `system-context.puml` and `stride-analysis.puml`: PlantUML diagrams for system context and STRIDE analysis.
-- `images/`: (To be generated) PNG diagrams for inclusion in the report.
+- `diagrams/`: PlantUML source files for system context and STRIDE analysis diagrams.
+- `images/`: PNG diagrams generated from PlantUML for inclusion in the report.
+
 
 ## Key Frameworks Covered
 - **STRIDE** (Microsoft): Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege
 - **PASTA**: Process for Attack Simulation and Threat Analysis
-- **Trike, VAST, OCTAVE**: Briefly discussed for context
+- **Trike, VAST, OCTAVE, OWASP**: Compared and discussed for context
 
-## Example: STRIDE Threat Table
 
-| Threat Category         | Example Attack         | Security Control                |
-|------------------------|-----------------------|---------------------------------|
-| Spoofing               | Credential theft      | MFA, strong password policy     |
-| Tampering              | SQL injection         | Input validation, ORM           |
-| Repudiation            | Log tampering         | Audit logs, digital signatures  |
-| Information Disclosure | Data leak             | Encryption, access control      |
-| Denial of Service      | API flooding          | Rate limiting, WAF              |
-| Elevation of Privilege | Privilege escalation  | RBAC, least privilege           |
+## Structure
+The report is organized into the following chapters:
 
-## Sample Code: Vulnerable Login (Python Flask)
+1. Introduction
+2. Background and Evolution of Threat Modeling
+3. STRIDE: Microsoft’s Threat Modeling Framework
+4. PASTA: Process for Attack Simulation and Threat Analysis
+5. Other Frameworks: Trike, VAST, OCTAVE, and OWASP
+6. Threat Modeling Methodology: Step-by-Step
+7. Case Study: Threat Model of a Vulnerable Web Application
+8. Security Controls, Mitigations, and Best Practices
+9. Risk Assessment, Reporting, and Continuous Improvement
+10. Lab: Practical Threat Modeling with Linux Commands
+11. Conclusion and Future Directions
+12. References
 
-```python
-@app.route('/login', methods=['POST'])
-def login():
-	username = request.form['username']
-	password = request.form['password']
-	user = db.query(User).filter_by(username=username, password=password).first()
-	if user:
-		session['user_id'] = user.id
-		return redirect('/dashboard')
-	return 'Login failed', 401
-```
-
-**Threats:** Susceptible to SQL injection, credential stuffing, and session fixation.
-
-**Mitigations:** Use parameterized queries, hash passwords, implement account lockout, and use secure session cookies.
-
-## Lab/Simulation
-
-To simulate a threat model:
-1. Clone this repo and install PlantUML and LaTeX.
-2. Generate diagrams:
+## Diagrams and Images
+- All PlantUML diagrams are in the `diagrams/` folder. Generate PNGs using PlantUML and place them in `images/`.
+- Example:
    ```sh
-   plantuml system-context.puml
-   plantuml stride-analysis.puml
+   plantuml diagrams/system-context.puml
+   plantuml diagrams/stride-analysis.puml
    mv *.png images/
    ```
-3. Compile the report:
-   ```sh
-   pdflatex threat-model.tex
-   bibtex threat-model
-   pdflatex threat-model.tex
-   pdflatex threat-model.tex
-   ```
+
+## Building the Report
+To build the PDF:
+```sh
+pdflatex threat-model.tex
+pdflatex threat-model.tex
+```
+All references are included in the final chapter. For bibliography, see `sample.bib`.
 
 ## References
 - Bruce Schneier, "Secrets and Lies: Digital Security in a Networked World", Wiley, 1999.
