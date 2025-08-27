@@ -64,5 +64,5 @@ To simulate a threat model:
 - Bruce Schneier, "Secrets and Lies: Digital Security in a Networked World", Wiley, 1999.
 - Adam Shostack, "Threat Modeling: Designing for Security", Wiley, 2014.
 - [OWASP Threat Modeling Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html)
-- [Microsoft STRIDE](https://docs.microsoft.com/en-us/security/engineering/stride-threat-modeling)
+- [Microsoft STRIDE](https://docs.microsofhttps://verbose-adventure-7vw5jj5j94pp2p5xv.github.dev/t.com/en-us/security/engineering/stride-threat-modeling)
 - [PASTA Methodology](https://www.securityinnovation.com/blog/pasta-threat-modeling-methodology/)
