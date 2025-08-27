@@ -1,0 +1,19 @@
+@startuml
+title System Context - Web Application Threat Model
+
+actor "User" as user
+actor "Admin" as admin
+database "Database" as db
+component "Web Application" as webapp
+component "Auth Service" as auth
+cloud "Email Service" as email
+cloud "Payment Gateway" as payment
+
+user --> webapp : Uses (HTTPS)
+admin --> webapp : Manages (HTTPS)
+webapp --> db : Reads/Writes (Encrypted)
+webapp --> auth : Authenticates
+webapp --> email : Sends emails (SMTP/TLS)
+webapp --> payment : Processes payments (HTTPS/API)
+
+@enduml

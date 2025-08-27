@@ -1,0 +1,43 @@
+@startuml
+title STRIDE Threat Model Analysis
+
+rectangle "Spoofing" {
+  [Session hijacking]
+  [Credential theft]
+  [Token forgery]
+}
+
+rectangle "Tampering" {
+  [SQL injection]
+  [XSS attacks]
+  [CSRF attacks]
+}
+
+rectangle "Repudiation" {
+  [Audit log tampering]
+  [Transaction denial]
+}
+
+rectangle "Information Disclosure" {
+  [Data leaks]
+  [Path traversal]
+  [Unencrypted data]
+}
+
+rectangle "Denial of Service" {
+  [Resource exhaustion]
+  [API flooding]
+}
+
+rectangle "Elevation of Privilege" {
+  [Privilege escalation]
+  [Role manipulation]
+}
+
+[Session hijacking] --> [SQL injection]
+[SQL injection] --> [Audit log tampering]
+[Audit log tampering] --> [Data leaks]
+[Data leaks] --> [Resource exhaustion]
+[Resource exhaustion] --> [Privilege escalation]
+
+@enduml
